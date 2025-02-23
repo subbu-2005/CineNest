@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Movie  DataBase</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #1c1c1c;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* IMDb-style Full-Width Navbar */
+        .navbar {
+            background-color: #000 !important;
+            width: 100%;
+            padding: 15px 20px;
+        }
+
+        .navbar-brand {
+            color: #f5c518 !important;
+            font-weight: bold;
+            font-size: 22px;
+        }
+
+        .nav-link {
+            color: #f5c518 !important;
+            font-size: 18px;
+            padding: 10px;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .nav-link:hover {
+            color: #fff !important;
+        }
+
+        /* IMDb Button Styling */
+        .btn-imdb {
+            background-color: #f5c518;
+            color: #000;
+            font-weight: bold;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: background 0.3s ease-in-out;
+        }
+
+        .btn-imdb:hover {
+            background-color: #d4ac0d;
+            color: #000;
+        }
+
+        .table {
+            background-color: #292929;
+            color: #fff;
+        }
+
+        .thead-light {
+            background-color: #f5c518 !important;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            border: none;
+        }
+
+        .btn-danger:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Full-Width IMDb Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <a class="navbar-brand" href="#">CineNest</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index">Home</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">DataBase</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="watchlistItemForm">Add New Movie</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-5 pt-5">
+        <h2 class="mt-4">Watchlist</h2>
+        <table class="table table-bordered">
+            <thead class="thead-light">
+                <tr>
+                    <th>Title</th>
+                    <th>Rating</th>
+                    <th>Priority</th>
+                    <th>Comment</th>
+                    <th>Update</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="movieRow : ${moviesList}">
+                    <td th:text="${movieRow.title}">Avatar</td>
+                    <td th:text="${movieRow.rating}">7.8</td>
+                    <td th:text="${movieRow.priority}">LOW</td>
+                    <td th:text="${movieRow.comment}">Peter recommended</td>
+                    <td><a th:href="@{/watchlistItemForm(id=${movieRow.id})}" class="btn btn-imdb">Update</a></td>
+                    <td><a th:href="@{/deleteMovie(id=${movieRow.id})}" class="btn btn-danger">Delete</a></td>
+                </tr>
+            </tbody>
+        </table>
+        <hr />
+        <div>Number of movies to watch: <span th:text="${noOfMovies}">0</span></div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</body>
+</html>
