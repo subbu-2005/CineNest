@@ -1,0 +1,10 @@
+com\shubham\MovieWatchlistAppApplication.class
+com\shubham\entity\validations\RatingAnnotationLogic.class
+com\shubham\entity\validations\Priority.class
+com\shubham\service\RatingService.class
+com\shubham\entity\Movie.class
+com\shubham\controller\MovieController.class
+com\shubham\entity\validations\PriorityAnnotationLogic.class
+com\shubham\repository\MovieRepository.class
+com\shubham\service\DatabaseService.class
+com\shubham\entity\validations\Rating.class
